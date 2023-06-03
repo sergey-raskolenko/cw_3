@@ -21,3 +21,6 @@ def test_list_of_5_or_less_operations():
 	assert list_of_5_or_less_operations([{}, {}, {}, {}, {}, {}]) == [{}, {}, {}, {}, {}]
 	assert list_of_5_or_less_operations([{}, {}, {}]) == [{}, {}, {}]
 
+
+def test_transform_date(test_operation, true_operation_date):
+	assert transform_date(test_operation) == true_operation_date

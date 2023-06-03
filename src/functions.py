@@ -1,7 +1,7 @@
 import json
+from datetime import datetime
 
-
-def load_data_from_json(filename):
+def load_data_from_json(filename) -> list[dict]:
 	"""
 	Считывает информация с json-файла и возвращает ее
 	:return: Список данных
@@ -28,7 +28,7 @@ def sort_data_by_date(data: list[dict]) -> list[dict]:
 	return new_data
 
 
-def get_executed_data(data):
+def get_executed_data(data: list[dict]) -> list[dict]:
 	"""
 	Сортирует данные в списке по статусу операции
 	:return: Отсортированный список словарей
@@ -36,6 +36,10 @@ def get_executed_data(data):
 	return [item for item in data if item['state'] == 'EXECUTED']
 
 
-def list_of_5_or_less_operations(data):
+def list_of_5_or_less_operations(data: list[dict]) -> list[dict]:
 	return data[:5]
 
+
+def transform_date(operation: dict):
+	date = operation['date'].split('T')[0]
+	return datetime.strptime(date, '%Y-%m-%d').date().strftime('%d.%m.%Y')
