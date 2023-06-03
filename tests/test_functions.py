@@ -27,8 +27,8 @@ def test_list_of_5_or_less_operations(list_of_dict, expected):
 	assert list_of_5_or_less_operations(list_of_dict) == expected
 
 
-def test_transform_date(test_operation, true_operation_date):
-	assert transform_date(test_operation) == true_operation_date
+def test_transform_date(test_operation, true_test_operation_date):
+	assert transform_date(test_operation) == true_test_operation_date
 
 
 @pytest.mark.parametrize("operation_address, expected", [
@@ -52,3 +52,11 @@ def test_get_address_from_without_from(
 
 def test_get_address_to(test_operation, true_test_operation_address_to):
 	assert get_address_to(test_operation) == true_test_operation_address_to
+
+
+def test_get_amount_and_currency(test_operation, true_test_operation_amount_and_currency):
+	assert get_amount_and_currency(test_operation) == true_test_operation_amount_and_currency
+
+
+def test_true_operations_output(test_operation, true_test_operation_output):
+	assert true_operation_output(test_operation) == true_test_operation_output

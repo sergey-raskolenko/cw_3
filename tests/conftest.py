@@ -254,6 +254,7 @@ def test_operation():
 def true_test_operation_date():
 	return "26.08.2019"
 
+
 @pytest.fixture
 def true_test_operation_address_from():
 	return 'Maestro 1596 83** **** 5199'
@@ -262,6 +263,18 @@ def true_test_operation_address_from():
 @pytest.fixture
 def true_test_operation_address_to():
 	return 'Счет **9589'
+
+
+@pytest.fixture
+def true_test_operation_amount_and_currency():
+	return '31957.58 руб.'
+
+
+@pytest.fixture
+def true_test_operation_output():
+	return f'26.08.2019 Перевод организации\n' \
+		f'Maestro 1596 83** **** 5199 -> Счет **9589\n' \
+		f'31957.58 руб.'
 
 
 @pytest.fixture

@@ -93,3 +93,23 @@ def get_address_to(operation: dict) -> str:
 	:return: Замаскированный адрес 'to'
 	"""
 	return mask_address(operation['to'])
+
+
+def get_amount_and_currency(operation: dict) -> str:
+	"""
+	Выводит сумму и валюту операции
+	:param operation: Словарь операции
+	:return: сумма + валюта
+	"""
+	return f"{operation['operationAmount']['amount']} {operation['operationAmount']['currency']['name']}"
+
+
+def true_operation_output(operation: dict):
+	"""
+	Необходимый вывод всей информации об операции
+	:param operation: Словарь операции
+	:return: строка с информацией
+	"""
+	return f"{transform_date(operation)} {operation['description']}\n"\
+		f"{get_address_from(operation)} -> {get_address_to(operation)}\n"\
+		f"{get_amount_and_currency(operation)}"
