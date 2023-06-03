@@ -251,5 +251,37 @@ def test_operation():
 
 
 @pytest.fixture
-def true_operation_date():
+def true_test_operation_date():
 	return "26.08.2019"
+
+@pytest.fixture
+def true_test_operation_address_from():
+	return 'Maestro 1596 83** **** 5199'
+
+
+@pytest.fixture
+def true_test_operation_address_to():
+	return 'Счет **9589'
+
+
+@pytest.fixture
+def test_operation_without_from_address():
+	return {
+		"id": 172864002,
+		"state": "EXECUTED",
+		"date": "2018-12-28T23:10:35.459698",
+		"operationAmount": {
+			"amount": "49192.52",
+			"currency": {
+				"name": "USD",
+				"code": "USD"
+			}
+		},
+		"description": "Открытие вклада",
+		"to": "Счет 96231448929365202391"
+	}
+
+
+@pytest.fixture
+def true_from_address_of_operation_without_from_address():
+	return ''

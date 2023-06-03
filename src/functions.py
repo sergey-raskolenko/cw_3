@@ -72,3 +72,24 @@ def mask_address(operation_address: str) -> str:
 					f'{operation_address[-1][4:6]}** **** {operation_address[-1][-4:]}'
 			elif len(operation_address[-1]) == 20:
 				return f'{" ".join(operation_address[:-1])} **{operation_address[-1][-4:]}'
+
+
+def get_address_from(operation: dict) -> str:
+	"""
+	Возвращает замаскированный адрес операции по ключу 'from'
+	:param operation: Словарь операции
+	:return: Замаскированный адрес 'from'
+	"""
+	if 'from' not in operation:
+		return ''
+	else:
+		return mask_address(operation['from'])
+
+
+def get_address_to(operation: dict) -> str:
+	"""
+	Возвращает замаскированный адрес операции по ключу 'to'
+	:param operation: Словарь операции
+	:return: Замаскированный адрес 'to'
+	"""
+	return mask_address(operation['to'])

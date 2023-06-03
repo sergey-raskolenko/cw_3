@@ -39,3 +39,16 @@ def test_transform_date(test_operation, true_operation_date):
 ])
 def test_mask_address(operation_address, expected):
 	assert mask_address(operation_address) == expected
+
+
+def test_get_address_from(test_operation, true_test_operation_address_from):
+	assert get_address_from(test_operation) == true_test_operation_address_from
+
+
+def test_get_address_from_without_from(
+		test_operation_without_from_address, true_from_address_of_operation_without_from_address):
+	assert get_address_from(test_operation_without_from_address) == true_from_address_of_operation_without_from_address
+
+
+def test_get_address_to(test_operation, true_test_operation_address_to):
+	assert get_address_to(test_operation) == true_test_operation_address_to
