@@ -1,3 +1,5 @@
+import pytest
+
 from src.functions import *
 
 
@@ -17,10 +19,23 @@ def test_get_executed_data(data_from_test_json, executed_data_from_test_json):
 	assert get_executed_data(data_from_test_json) == executed_data_from_test_json
 
 
-def test_list_of_5_or_less_operations():
-	assert list_of_5_or_less_operations([{}, {}, {}, {}, {}, {}]) == [{}, {}, {}, {}, {}]
-	assert list_of_5_or_less_operations([{}, {}, {}]) == [{}, {}, {}]
+@pytest.mark.parametrize("list_of_dict, expected", [
+	([{}, {}, {}, {}, {}, {}], [{}, {}, {}, {}, {}]),
+	([{}, {}, {}], [{}, {}, {}])
+])
+def test_list_of_5_or_less_operations(list_of_dict, expected):
+	assert list_of_5_or_less_operations(list_of_dict) == expected
 
 
 def test_transform_date(test_operation, true_operation_date):
 	assert transform_date(test_operation) == true_operation_date
+
+
+@pytest.mark.parametrize("operation_address, expected", [
+	('', ''),
+	('Maestro 1596837868705199', 'Maestro 1596 83** **** 5199'),
+	('Счет 64686473678894779589', 'Счет **9589'),
+	('Visa Platinum 1246377376343588', 'Visa Platinum 1246 37** **** 3588'),
+])
+def test_mask_address(operation_address, expected):
+	assert mask_address(operation_address) == expected
