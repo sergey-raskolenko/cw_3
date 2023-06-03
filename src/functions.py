@@ -34,3 +34,8 @@ def get_executed_data(data):
 	:return: Отсортированный список словарей
 	"""
 	return [item for item in data if item['state'] == 'EXECUTED']
+
+
+def list_of_5_or_less_operations(data):
+	return data[:5]
+
