@@ -9,8 +9,8 @@ def test_delete_empty_operation(data_for_delete_empty_operation, expected_result
 	assert delete_empty_operation(data_for_delete_empty_operation) == expected_result_for_delete_empty_operation
 
 
-def test_sort_data_by_date():
-	pass
+def test_sort_data_by_date(data_from_test_json, sorted_by_date_data_from_test_json):
+	assert sort_data_by_date(data_from_test_json) == sorted_by_date_data_from_test_json
 
 
 def test_get_executed_data():

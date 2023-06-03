@@ -11,7 +11,7 @@ def load_data_from_json(filename):
 	return data
 
 
-def delete_empty_operation(operations_list):
+def delete_empty_operation(operations_list: list[dict]) -> list[dict]:
 	"""
 	Удаляет пустые записи об операциях из данных
 	:return: Список с заполненными данными
@@ -19,12 +19,13 @@ def delete_empty_operation(operations_list):
 	return [operation for operation in operations_list if operation != {}]
 
 
-def sort_data_by_date():
+def sort_data_by_date(data: list[dict]) -> list[dict]:
 	"""
 	Сортирует данные в списке словарей по дате
 	:return: Отсортированный список словарей
 	"""
-	pass
+	new_data = sorted(data, key=lambda item: item.get('date'), reverse=True)
+	return new_data
 
 
 def get_executed_data():
