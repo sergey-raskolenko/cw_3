@@ -13,5 +13,5 @@ def test_sort_data_by_date(data_from_test_json, sorted_by_date_data_from_test_js
 	assert sort_data_by_date(data_from_test_json) == sorted_by_date_data_from_test_json
 
 
-def test_get_executed_data():
-	pass
+def test_get_executed_data(data_from_test_json, executed_data_from_test_json):
+	assert get_executed_data(data_from_test_json) == executed_data_from_test_json

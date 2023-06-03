@@ -28,9 +28,9 @@ def sort_data_by_date(data: list[dict]) -> list[dict]:
 	return new_data
 
 
-def get_executed_data():
+def get_executed_data(data):
 	"""
 	Сортирует данные в списке по статусу операции
 	:return: Отсортированный список словарей
 	"""
-	pass
+	return [item for item in data if item['state'] == 'EXECUTED']
