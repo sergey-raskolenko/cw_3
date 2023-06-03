@@ -60,3 +60,7 @@ def test_get_amount_and_currency(test_operation, true_test_operation_amount_and_
 
 def test_true_operations_output(test_operation, true_test_operation_output):
 	assert true_operation_output(test_operation) == true_test_operation_output
+
+
+def test_main(path_to_test_json, true_output_of_test_json):
+	assert main(path_to_test_json) == true_output_of_test_json

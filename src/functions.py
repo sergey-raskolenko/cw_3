@@ -68,7 +68,7 @@ def mask_address(operation_address: str) -> str:
 	else:
 		if operation_address[-1].isdigit():
 			if len(operation_address[-1]) == 16:
-				return f'{" ".join(operation_address[:-1])} {operation_address[-1][:4]} '\
+				return f'{" ".join(operation_address[:-1])} {operation_address[-1][:4]} ' \
 					f'{operation_address[-1][4:6]}** **** {operation_address[-1][-4:]}'
 			elif len(operation_address[-1]) == 20:
 				return f'{" ".join(operation_address[:-1])} **{operation_address[-1][-4:]}'
@@ -104,12 +104,29 @@ def get_amount_and_currency(operation: dict) -> str:
 	return f"{operation['operationAmount']['amount']} {operation['operationAmount']['currency']['name']}"
 
 
-def true_operation_output(operation: dict):
+def true_operation_output(operation: dict) -> str:
 	"""
 	Необходимый вывод всей информации об операции
 	:param operation: Словарь операции
 	:return: строка с информацией
 	"""
-	return f"{transform_date(operation)} {operation['description']}\n"\
-		f"{get_address_from(operation)} -> {get_address_to(operation)}\n"\
+	return f"{transform_date(operation)} {operation['description']}\n" \
+		f"{get_address_from(operation)} -> {get_address_to(operation)}\n" \
 		f"{get_amount_and_currency(operation)}"
+
+
+def main(filename) -> list:
+	"""
+	Возвращает список строк из 5 последних выполненных клиентом операций:
+	:param filename: Абсолютный путь к json-файлу
+	:return: Список строк последних опер
+	"""
+	data = load_data_from_json(filename)
+	data = delete_empty_operation(data)
+	data = sort_data_by_date(data)
+	data = get_executed_data(data)
+	data = list_of_5_or_less_operations(data)
+	output_data = []
+	for operation in data:
+		output_data.append(true_operation_output(operation))
+	return output_data

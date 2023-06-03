@@ -74,6 +74,15 @@ def data_from_test_json():
 
 
 @pytest.fixture
+def true_output_of_test_json():
+	return [
+		f'26.08.2019 Перевод организации\nMaestro 1596 83** **** 5199 -> Счет **9589\n31957.58 руб.',
+		f'28.12.2018 Открытие вклада\n -> Счет **2391\n49192.52 USD',
+		f'29.11.2018 Перевод с карты на карту\nMasterCard 3152 47** **** 5065 -> Visa Gold 9447 34** **** 5960\n3348.98 USD'
+	]
+
+
+@pytest.fixture
 def data_for_delete_empty_operation():
 	return [
 		{
@@ -272,8 +281,8 @@ def true_test_operation_amount_and_currency():
 
 @pytest.fixture
 def true_test_operation_output():
-	return f'26.08.2019 Перевод организации\n' \
-		f'Maestro 1596 83** **** 5199 -> Счет **9589\n' \
+	return f'26.08.2019 Перевод организации\n'\
+		f'Maestro 1596 83** **** 5199 -> Счет **9589\n'\
 		f'31957.58 руб.'
 
 
