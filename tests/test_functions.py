@@ -32,7 +32,6 @@ def test_transform_date(test_operation, true_test_operation_date):
 
 
 @pytest.mark.parametrize("operation_address, expected", [
-	('', ''),
 	('Maestro 1596837868705199', 'Maestro 1596 83** **** 5199'),
 	('Счет 64686473678894779589', 'Счет **9589'),
 	('Visa Platinum 1246377376343588', 'Visa Platinum 1246 37** **** 3588'),

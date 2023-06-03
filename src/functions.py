@@ -1,3 +1,4 @@
+# Импорт необходимых библиотек
 import json
 from datetime import datetime
 
@@ -63,15 +64,14 @@ def mask_address(operation_address: str) -> str:
 	:return: Замаскированный адрес
 	"""
 	operation_address = operation_address.split()
-	if len(operation_address) == 0:
-		return ''
-	else:
-		if operation_address[-1].isdigit():
-			if len(operation_address[-1]) == 16:
-				return f'{" ".join(operation_address[:-1])} {operation_address[-1][:4]} ' \
-					f'{operation_address[-1][4:6]}** **** {operation_address[-1][-4:]}'
-			elif len(operation_address[-1]) == 20:
-				return f'{" ".join(operation_address[:-1])} **{operation_address[-1][-4:]}'
+	if operation_address[-1].isdigit():
+		# Проверка, что это номер карты и его маскировка
+		if len(operation_address[-1]) == 16:
+			return f'{" ".join(operation_address[:-1])} {operation_address[-1][:4]} ' \
+				f'{operation_address[-1][4:6]}** **** {operation_address[-1][-4:]}'
+		# Проверка, что это номер счета и его маскировка
+		elif len(operation_address[-1]) == 20:
+			return f'{" ".join(operation_address[:-1])} **{operation_address[-1][-4:]}'
 
 
 def get_address_from(operation: dict) -> str:
